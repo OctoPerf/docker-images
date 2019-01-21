@@ -27,4 +27,7 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && curl --location --silent --show-error --output ${JMETER_DIR}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && java -cp ${JMETER_DIR}/lib/ext/jmeter-plugins-manager-${JMETER_PLUGINS_MANAGER_VERSION}.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
   && ${JMETER_DIR}/bin/PluginsManagerCMD.sh install ${JMETER_PLUGINS} \
+  && rm -f ${JMETER_DIR}/jmeter.log \
   && curl --location --silent --show-error --output ${JMETER_DIR}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL
+
+WORKDIR ${JMETER_DIR}
