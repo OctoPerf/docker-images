@@ -30,4 +30,4 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && rm -f ${JMETER_DIR}/jmeter.log \
   && curl --location --silent --show-error --output ${JMETER_DIR}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL
 
-WORKDIR ${JMETER_DIR}
+WORKDIR ${HOME}
