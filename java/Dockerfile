@@ -9,7 +9,7 @@ RUN apt-get update -y \
     && useradd -r -u 1001 -g octoperf octoperf \
     && echo 'octoperf:octoperf' | chpasswd \
     && mkdir -p /home/octoperf \
-    && chown -R octoperf:octoperf /home/octoperf \
+    && chown -R octoperf:octoperf /home/octoperf
 
 USER octoperf
 
