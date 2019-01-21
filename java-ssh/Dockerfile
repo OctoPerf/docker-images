@@ -7,6 +7,7 @@ RUN apt-get update -y \
   && apt-get autoremove --purge -y \
   && rm -rf /var/lib/apt/lists/* \
   && mkdir /var/run/sshd \
+  && ssh-keygen -A \
   && service ssh reload \
   && locale-gen en_US.UTF-8
 
