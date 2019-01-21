@@ -22,7 +22,7 @@ USER octoperf
 RUN curl -O $JMETER_DOWNLOAD_URL \
   && tar -xzvf $JMETER_TGZ \
   && rm $JMETER_TGZ \
-  && rm -rf ${JMETER_DIR}/printables_docs ${JMETER_DIR}/docs ${JMETER_DIR}/licenses ${JMETER_DIR}/extras \
+  && rm -rf ${JMETER_DIR}/printable_docs ${JMETER_DIR}/docs ${JMETER_DIR}/licenses ${JMETER_DIR}/extras \
   && curl --location --silent --show-error --output ${JMETER_DIR}/lib/ext/jmeter-plugins-manager-${JMETER_PLUGINS_MANAGER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/jmeter-plugins-manager/${JMETER_PLUGINS_MANAGER_VERSION}/jmeter-plugins-manager-${JMETER_PLUGINS_MANAGER_VERSION}.jar \
   && curl --location --silent --show-error --output ${JMETER_DIR}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && java -cp ${JMETER_DIR}/lib/ext/jmeter-plugins-manager-${JMETER_PLUGINS_MANAGER_VERSION}.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
