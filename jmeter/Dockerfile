@@ -5,7 +5,7 @@ ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://mirror.ibcp.fr/pub/apache/jmeter/binaries/$JMETER_TGZ" \
     JMETER_HOME="$HOME/apache-jmeter-$JMETER_VERSION" \
     OCTOPERF_PLUGIN_URL="https://github.com/OctoPerf/thread-group/releases/download/1.0.0/thread-group-1.0.0.jar" \
-    CMDRUNNER_VERSION="2.2.1" \
+    CMDRUNNER_VERSION="2.2" \
     JMETER_PLUGINS="jpgc-casutg"
 
 USER root
@@ -23,8 +23,10 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && rm $JMETER_TGZ \
   && rm -rf ${JMETER_HOME}/printable_docs ${JMETER_HOME}/docs ${JMETER_HOME}/licenses ${JMETER_HOME}/extras \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar https://jmeter-plugins.org/get/ \
-  && curl -L --show-error -o ${JMETER_HOME}/lib/cmdrunner.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
+  && curl -L --show-error -o ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
   && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install ${JMETER_PLUGINS} \
   && rm -f ${HOME}/jmeter.log \
+  && rm -f ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar \
+  && rm -f ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL
