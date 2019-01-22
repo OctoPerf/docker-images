@@ -1,4 +1,4 @@
-FROM dockerfile/ruby
+FROM ruby
 
 RUN gem install s3_website \
     && apt-get update \
