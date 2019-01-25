@@ -13,8 +13,6 @@ RUN apt-get update -y \
     && mkdir -p /home/octoperf \
     && chown -R octoperf:octoperf /home/octoperf
 
-USER octoperf
-
 ENV HOME /home/octoperf
 
 WORKDIR ${HOME}

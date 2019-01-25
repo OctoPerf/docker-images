@@ -8,15 +8,11 @@ ENV JMETER_DOWNLOAD_URL="https://mirror.ibcp.fr/pub/apache/jmeter/binaries/$JMET
     CMDRUNNER_VERSION="2.2" \
     JMETER_PLUGINS="jpgc-casutg"
 
-USER root
-
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl \
   && apt-get autoremove --purge -y \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/*
-
-USER octoperf
 
 RUN curl -O $JMETER_DOWNLOAD_URL \
   && tar -xzvf $JMETER_TGZ \
@@ -29,4 +25,5 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && rm -f ${HOME}/jmeter.log \
   && rm -f ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar \
   && rm -f ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar \
-  && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL
+  && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
+  && chown -R octoperf:octoperf ${HOME}
