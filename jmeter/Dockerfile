@@ -17,7 +17,7 @@ RUN apt-get update -qqy \
 RUN curl -O $JMETER_DOWNLOAD_URL \
   && tar -xzvf $JMETER_TGZ \
   && rm $JMETER_TGZ \
-  && rm -rf ${JMETER_HOME}/printable_docs ${JMETER_HOME}/docs ${JMETER_HOME}/licenses ${JMETER_HOME}/extras \
+  && rm -rf ${JMETER_HOME}/printable_docs ${JMETER_HOME}/docs ${JMETER_HOME}/licenses \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar https://jmeter-plugins.org/get/ \
   && curl -L --show-error -o ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
