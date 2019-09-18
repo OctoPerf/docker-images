@@ -9,7 +9,7 @@ ENV JMETER_DOWNLOAD_URL="https://mirror.ibcp.fr/pub/apache/jmeter/binaries/$JMET
     JMETER_PLUGINS="jpgc-casutg"
 
 RUN apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl \
+  && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl dos2unix \
   && apt-get autoremove --purge -y \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/*
