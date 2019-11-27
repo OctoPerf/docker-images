@@ -21,9 +21,8 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar https://jmeter-plugins.org/get/ \
   && curl -L --show-error -o ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar http://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/${CMDRUNNER_VERSION}/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
+  && chmod +x ${JMETER_HOME}/bin/PluginsManagerCMD.sh \
   && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install ${JMETER_PLUGINS} \
   && rm -f ${HOME}/jmeter.log \
-  && rm -f ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar \
-  && rm -f ${JMETER_HOME}/lib/cmdrunner-${CMDRUNNER_VERSION}.jar \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
   && chown -R octoperf:octoperf ${HOME}
