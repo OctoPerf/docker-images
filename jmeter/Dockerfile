@@ -12,9 +12,8 @@ RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl dos2unix \
   && apt-get autoremove --purge -y \
   && apt-get autoclean \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN curl -O $JMETER_DOWNLOAD_URL \
+  && rm -rf /var/lib/apt/lists/* \
+  && curl -O $JMETER_DOWNLOAD_URL \
   && tar -xzvf $JMETER_TGZ \
   && rm $JMETER_TGZ \
   && rm -rf ${JMETER_HOME}/printable_docs ${JMETER_HOME}/docs ${JMETER_HOME}/licenses \
