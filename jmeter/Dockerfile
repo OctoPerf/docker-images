@@ -24,5 +24,6 @@ RUN curl -O $JMETER_DOWNLOAD_URL \
   && chmod +x ${JMETER_HOME}/bin/PluginsManagerCMD.sh \
   && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install ${JMETER_PLUGINS} \
   && rm -f ${HOME}/jmeter.log \
+  && rm -rf /tmp/pmgr_cache \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
   && chown -R octoperf:octoperf ${HOME}
