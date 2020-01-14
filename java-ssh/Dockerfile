@@ -8,3 +8,7 @@ RUN apt-get update -y \
   && ssh-keygen -A \
   && service ssh reload \
   && locale-gen en_US.UTF-8
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
