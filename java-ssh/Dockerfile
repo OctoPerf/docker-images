@@ -1,14 +1,9 @@
 FROM octoperf/java
 
 RUN apt-get update -y \
-  && apt-get -y --no-install-recommends install net-tools sysstat ssh locales \
+  && apt-get -y --no-install-recommends install net-tools sysstat ssh \
   && apt-get autoremove --purge -y \
   && rm -rf /var/lib/apt/lists/* \
   && mkdir /var/run/sshd \
   && ssh-keygen -A \
-  && service ssh reload \
-  && locale-gen en_US.UTF-8
-
-ENV LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
+  && service ssh reload

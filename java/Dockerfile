@@ -4,7 +4,7 @@ ENV USER_ID=9001
 
 RUN set -eux \
 	&& apt-get update -y \
-    && apt-get -y --no-install-recommends install openjdk-11-jre gosu \
+    && apt-get -y --no-install-recommends install openjdk-11-jre gosu locales \
     && gosu nobody true \
     && groupadd -g ${USER_ID} octoperf \
     && useradd -r -u ${USER_ID} -g octoperf octoperf \
@@ -13,9 +13,13 @@ RUN set -eux \
     && chown -R octoperf:octoperf /home/octoperf \
     && apt-get -y autoremove --purge \
     && apt-get -y autoclean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && locale-gen en_US.UTF-8
 
-ENV HOME /home/octoperf
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8 \
+    HOME=/home/octoperf
 
 WORKDIR ${HOME}
 
