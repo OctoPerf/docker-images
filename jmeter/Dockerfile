@@ -22,6 +22,8 @@ RUN apt-get update -qqy \
   && java -cp ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar org.jmeterplugins.repository.PluginManagerCMDInstaller \
   && chmod +x ${JMETER_HOME}/bin/PluginsManagerCMD.sh \
   && ${JMETER_HOME}/bin/PluginsManagerCMD.sh install ${JMETER_PLUGINS} \
+  && echo "file.encoding=UTF-8" >> ${JMETER_HOME}/bin/system.properties \
+  && echo "sampleresult.default.encoding=UTF-8" >> ${JMETER_HOME}/bin/system.properties \
   && rm -f ${HOME}/jmeter.log \
   && rm -rf /tmp/pmgr_cache \
   && rm -f ${JMETER_HOME}/lib/jackson-* \
