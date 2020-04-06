@@ -6,7 +6,7 @@ ENV JMETER_DOWNLOAD_URL="https://archive.apache.org/dist/jmeter/binaries/$JMETER
     JMETER_HOME="$HOME/apache-jmeter-$JMETER_VERSION" \
     OCTOPERF_PLUGIN_URL="https://github.com/OctoPerf/thread-group/releases/download/1.0.0/thread-group-1.0.0.jar" \
     CMDRUNNER_VERSION="2.2" \
-    JMETER_PLUGINS="jpgc-casutg"
+    JMETER_PLUGINS="jpgc-casutg,jpgc-functions"
 
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl dos2unix \
