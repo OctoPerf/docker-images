@@ -1,10 +1,6 @@
 FROM openjdk:11-jre-slim
 
-ENV USER_ID=9001 \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8 \
-    HOME=/home/octoperf
+ENV USER_ID=9001
 
 RUN set -eux \
     && apt-get update -y \
@@ -19,5 +15,10 @@ RUN set -eux \
     && apt-get -y autoclean \
     && rm -rf /var/lib/apt/lists/* \
     && locale-gen en_US.UTF-8
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8 \
+    HOME=/home/octoperf
 
 WORKDIR ${HOME}
