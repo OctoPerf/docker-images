@@ -1,10 +1,11 @@
-FROM ubuntu:19.10
+FROM openjdk:11-jre-slim
 
-ENV USER_ID=9001
+ENV USER_ID=9001 \
+    HOME=/home/octoperf
 
 RUN set -eux \
-	&& apt-get update -y \
-    && apt-get -y --no-install-recommends install openjdk-11-jre gosu locales \
+    && apt-get update -y \
+    && apt-get -y --no-install-recommends install gosu \
     && gosu nobody true \
     && groupadd -g ${USER_ID} octoperf \
     && useradd -r -u ${USER_ID} -g octoperf octoperf \
@@ -13,14 +14,6 @@ RUN set -eux \
     && chown -R octoperf:octoperf /home/octoperf \
     && apt-get -y autoremove --purge \
     && apt-get -y autoclean \
-    && rm -rf /var/lib/apt/lists/* \
-    && locale-gen en_US.UTF-8
-
-ENV LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8 \
-    HOME=/home/octoperf
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR ${HOME}
-
-CMD ["/bin/bash"]
