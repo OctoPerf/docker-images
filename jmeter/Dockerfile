@@ -9,9 +9,9 @@ ENV JMETER_DOWNLOAD_URL="https://archive.apache.org/dist/jmeter/binaries/$JMETER
     JMETER_PLUGINS="jpgc-casutg,jpgc-functions"
 
 RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl dos2unix tzdata \
   && echo 'Etc/UTC' | tee /etc/timezone \
   && dpkg-reconfigure --frontend noninteractive tzdata \
-  && apt-get -qqy --no-install-recommends install bzip2 unzip tar curl dos2unix \
   && apt-get autoremove --purge -y \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/* \
