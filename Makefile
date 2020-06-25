@@ -1,6 +1,6 @@
 
 %.docker.build:
-	docker build -t octoperf/$* $*/
+	docker build --pull -t octoperf/$* $*/
 
 %.docker.push: %.docker.build
 	docker push octoperf/$*
