@@ -28,9 +28,6 @@ RUN apt-get update -qqy \
   && echo "sampleresult.default.encoding=UTF-8" >> ${JMETER_HOME}/bin/jmeter.properties \
   && rm -f ${HOME}/jmeter.log \
   && rm -rf /tmp/pmgr_cache \
-  && rm -f ${JMETER_HOME}/lib/jackson-* \
-  && rm -f ${JMETER_HOME}/lib/error_prone* \
-  && rm -f ${JMETER_HOME}/lib/checker-qual-* \
   && rm -rf ${JMETER_HOME}/docs \
   && rm -rf ${JMETER_HOME}/printable_docs \
   && rm -rf ${JMETER_HOME}/licenses \
