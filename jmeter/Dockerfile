@@ -1,11 +1,11 @@
 FROM octoperf/java-ssh
 
-ENV JMETER_VERSION 5.2.1
+ENV JMETER_VERSION 5.4.1
 ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://archive.apache.org/dist/jmeter/binaries/$JMETER_TGZ" \
     JMETER_HOME="$HOME/apache-jmeter-$JMETER_VERSION" \
     OCTOPERF_PLUGIN_URL="https://github.com/OctoPerf/thread-group/releases/download/1.0.0/thread-group-1.0.0.jar" \
-    CMDRUNNER_VERSION="2.2" \
+    CMDRUNNER_VERSION="2.2.1" \
     JMETER_PLUGINS="jpgc-casutg,jpgc-functions"
 
 RUN apt-get update -qqy \
