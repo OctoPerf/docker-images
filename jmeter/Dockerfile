@@ -31,6 +31,12 @@ RUN apt-get update -qqy \
   && rm -rf ${JMETER_HOME}/docs \
   && rm -rf ${JMETER_HOME}/printable_docs \
   && rm -rf ${JMETER_HOME}/licenses \
+  && rm -f ${JMETER_HOME}/lib/jackson-* \
+  && rm -f ${JMETER_HOME}/lib/error_prone* \
+  && rm -f ${JMETER_HOME}/lib/checker-qual-* \
+  && rm -f ${JMETER_HOME}/lib/commons-io-* \
+  && rm -f ${JMETER_HOME}/lib/commons-lang3-* \
+  && rm -f ${JMETER_HOME}/lib/slf4j-api-* \
   && sed -i 's/append="false"/append="true"/' ${JMETER_HOME}/bin/log4j2.xml \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
   && chown -R octoperf:octoperf ${HOME}
