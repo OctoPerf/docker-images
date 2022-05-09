@@ -37,6 +37,7 @@ RUN apt-get update -qqy \
   && rm -f ${JMETER_HOME}/lib/commons-io-* \
   && rm -f ${JMETER_HOME}/lib/commons-lang3-* \
   && rm -f ${JMETER_HOME}/lib/slf4j-api-* \
+  && rm -f ${JMETER_HOME}/lib/caffeine-* \
   && sed -i 's/append="false"/append="true"/' ${JMETER_HOME}/bin/log4j2.xml \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
   && chown -R octoperf:octoperf ${HOME}
