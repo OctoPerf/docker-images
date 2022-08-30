@@ -1,4 +1,5 @@
-FROM octoperf/java
+ARG JAVA_VERSION=11
+FROM octoperf/java:$(JAVA_VERSION)
 
 RUN apt-get update -y \
   && apt-get -y --no-install-recommends install net-tools sysstat ssh \
