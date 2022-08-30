@@ -1,4 +1,5 @@
-FROM octoperf/java-ssh
+ARG JAVA_VERSION=latest
+FROM octoperf/java-ssh:${JAVA_VERSION}
 
 ENV JMETER_VERSION 5.4.3
 ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
