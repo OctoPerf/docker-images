@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 ENV USER_ID=9001 \
-    JAVA_VERSION=17
+    JAVA_VERSION=11
 
 RUN set -eux \
 	&& apt-get update -y \
