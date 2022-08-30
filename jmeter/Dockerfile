@@ -1,5 +1,5 @@
-ARG JAVA_VERSION=latest \
-    JMETER_VERSION=5.5
+ARG JAVA_VERSION=latest
+ARG JMETER_VERSION=5.5
 
 FROM octoperf/java-ssh:${JAVA_VERSION}
 
