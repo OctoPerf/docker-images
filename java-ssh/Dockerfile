@@ -1,4 +1,4 @@
-FROM octoperf/java:17
+FROM octoperf/java
 
 RUN apt-get update -y \
   && apt-get -y --no-install-recommends install net-tools sysstat ssh \
