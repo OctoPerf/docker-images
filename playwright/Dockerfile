@@ -11,4 +11,4 @@ RUN apt-get update -y && \
     && apt-get -y autoremove --purge \
     && apt-get -y autoclean \
     && rm -rf /var/lib/apt/lists/* \
-    rm -f ${HOME}/pom.xml
+    && rm -f ${HOME}/pom.xml
