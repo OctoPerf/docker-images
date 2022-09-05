@@ -1,5 +1,4 @@
-ARG JAVA_VERSION=latest
-FROM octoperf/java:${JAVA_VERSION}
+FROM octoperf/java
 
 COPY pom.xml ${HOME}/pom.xml
 
