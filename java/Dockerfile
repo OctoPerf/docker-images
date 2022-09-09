@@ -1,4 +1,4 @@
-FROM 18-slim
+FROM openjdk:18-slim
 
 ENV USER_ID=9001
 
