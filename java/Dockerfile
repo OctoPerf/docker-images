@@ -1,10 +1,11 @@
 FROM ubuntu:22.04
 
-ENV USER_ID=9001
+ENV USER_ID=9001 \
+    JAVA_VERSION=17
 
 RUN set -eux \
-	&& apt-get update -y \
-    && apt-get -y --no-install-recommends install openjdk-17-jre gosu locales curl \
+    && apt-get update -y \
+    && apt-get -y --no-install-recommends install openjdk-${JAVA_VERSION}-jre gosu locales curl \
     && gosu nobody true \
     && groupadd -g ${USER_ID} octoperf \
     && useradd -r -u ${USER_ID} -g octoperf octoperf \
