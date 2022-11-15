@@ -5,7 +5,7 @@ ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://downloads.apache.org/jmeter/binaries/$JMETER_TGZ" \
     JMETER_HOME="$HOME/apache-jmeter-$JMETER_VERSION" \
     OCTOPERF_PLUGIN_URL="https://github.com/OctoPerf/thread-group/releases/download/1.0.0/thread-group-1.0.0.jar" \
-    CMDRUNNER_VERSION="2.2" \
+    CMDRUNNER_VERSION="2.3" \
     JMETER_PLUGINS="jpgc-casutg,jpgc-functions"
 
 RUN apt-get update -qqy \
