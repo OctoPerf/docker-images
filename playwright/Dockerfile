@@ -2,7 +2,7 @@ FROM octoperf/java
 
 COPY pom.xml ${HOME}/pom.xml
 
-ARG MAVEN_VERSION=3.8.6         
+ARG MAVEN_VERSION=3.8.7
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
