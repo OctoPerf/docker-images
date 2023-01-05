@@ -3,7 +3,7 @@ FROM octoperf/java-ssh
 ENV JMETER_VERSION=5.5
 ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://downloads.apache.org/jmeter/binaries/$JMETER_TGZ" \
-    JMETER_HOME="$HOME/apache-jmeter-$JMETER_VERSION" \
+    JMETER_HOME="${HOME}/apache-jmeter-$JMETER_VERSION" \
     OCTOPERF_PLUGIN_URL="https://github.com/OctoPerf/thread-group/releases/download/1.0.0/thread-group-1.0.0.jar" \
     CMDRUNNER_VERSION="2.3" \
     JMETER_PLUGINS="jpgc-casutg,jpgc-functions"
@@ -33,4 +33,5 @@ RUN apt-get update -qqy \
   && rm -rf ${JMETER_HOME}/licenses \
   && sed -i 's/append="false"/append="true"/' ${JMETER_HOME}/bin/log4j2.xml \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar $OCTOPERF_PLUGIN_URL \
-  && chown -R octoperf:octoperf ${HOME}
+  && chown -R octoperf:root ${HOME} \
+  && chmod -R 0775 ${JMETER_HOME}
