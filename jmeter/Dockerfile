@@ -34,4 +34,5 @@ RUN apt-get update -qqy \
   && sed -i 's/append="false"/append="true"/' ${JMETER_HOME}/bin/log4j2.xml \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar ${OCTOPERF_PLUGIN_URL} \
   && chown -R ${OP_USER}:root ${HOME} \
-  && chmod 0775 ${HOME}
+  && chmod 0775 ${HOME} \
+  && chmod 0664 /etc/hosts
