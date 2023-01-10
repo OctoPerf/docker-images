@@ -1,7 +1,7 @@
 FROM octoperf/java
 
-ARG MAVEN_VERSION=3.8.7 \
-    BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+ARG MAVEN_VERSION=3.8.7
+ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 # Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
 ENV MAVEN_HOME=/usr/share/maven \
