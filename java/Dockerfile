@@ -11,9 +11,8 @@ RUN set -eux \
     && apt-get update -y \
     && apt-get -y --no-install-recommends install openjdk-${JAVA_VERSION}-jre gosu locales curl \
     && gosu nobody true \
-    && groupadd -g 0 ${OP_USER} \
-    && groupadd -g ${OP_GID} ${OP_USER} \
-    && useradd -r -u ${OP_USERID} -g ${OP_GROUP} ${OP_USER} \
+    && groupadd -g ${OP_GID} ${OP_GROUP} \
+    && useradd -r -u ${OP_USERID} -g ${OP_GROUP} -G root ${OP_USER} \
     && echo "${OP_USER}:${OP_USER}" | chpasswd \
     && mkdir -p ${HOME} \
     && chown -R ${OP_USER}:root ${HOME} \
