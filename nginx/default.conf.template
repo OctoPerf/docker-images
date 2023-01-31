@@ -6,7 +6,7 @@ server {
     #access_log  /var/log/nginx/host.access.log  main;
 
     location / {
-        root   /usr/share/nginx/html${HTML_ROOT};
+        root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
 
