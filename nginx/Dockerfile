@@ -1,6 +1,6 @@
-FROM nginx:stable-alpine
+FROM nginxinc/nginx-unprivileged
 
-ENV NGINX_PORT=80
+ENV NGINX_PORT=8080
 ENV HTML_ROOT=""
 
 COPY default.conf.template /etc/nginx/templates/
