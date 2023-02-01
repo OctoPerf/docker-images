@@ -35,5 +35,5 @@ RUN apt-get update -qqy \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar ${OCTOPERF_PLUGIN_URL} \
   && mkdir -p ${JMETER_HOME}/resources \
   && chown -R ${OP_USER}:root ${HOME} \
-  && chmod 0775 ${HOME} \
+  && chmod -R 0775 ${HOME} \
   && chmod 0664 /etc/hosts
