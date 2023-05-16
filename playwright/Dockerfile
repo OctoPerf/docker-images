@@ -1,7 +1,7 @@
 FROM octoperf/java
 
 ARG MAVEN_VERSION=3.9.2 \
-    PLAYWRIGHT_VERSION=1.33.0
+    PLAYWRIGHT_VERSION=${TAG}
 
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     MAVEN_HOME=/usr/share/maven \
