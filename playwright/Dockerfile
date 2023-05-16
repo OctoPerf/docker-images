@@ -1,11 +1,10 @@
 FROM octoperf/java
 
-ARG MAVEN_VERSION=3.9.2
-ARG PLAYWRIGHT_VERSION=1.33.0
-ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
+ENV MAVEN_VERSION=3.9.2 \
+    PLAYWRIGHT_VERSION=1.33.0
 
-# Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
-ENV MAVEN_HOME=/usr/share/maven \
+ENV BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
+    MAVEN_HOME=/usr/share/maven \
     MAVEN_CONFIG="${ROOT_DIR}/.m2"
 
 COPY pom.xml ${HOME}/pom.xml
