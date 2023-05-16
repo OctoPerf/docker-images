@@ -1,6 +1,7 @@
 FROM octoperf/java
 
 ARG MAVEN_VERSION=3.9.2
+ARG PLAYWRIGHT_VERSION=1.33.0
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 # Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
@@ -21,6 +22,6 @@ RUN set -eux \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
   && mvn --version \
-  && mvn exec:java -f ${HOME}/pom.xml -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps" \
-  && mvn exec:java -f ${HOME}/pom.xml -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium" \
+  && mvn exec:java -f ${HOME}/pom.xml -e -DplaywrightVersion=${PLAYWRIGHT_VERSION} -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps" \
+  && mvn exec:java -f ${HOME}/pom.xml -e -DplaywrightVersion=${PLAYWRIGHT_VERSION} -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium" \
   && rm -f ${HOME}/pom.xml
