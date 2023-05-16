@@ -1,7 +1,7 @@
 FROM octoperf/java
 
 ARG MAVEN_VERSION=3.9.2 \
-    PLAYWRIGHT_VERSION=${TAG}
+    TAG=1.33.0
 
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     MAVEN_HOME=/usr/share/maven \
@@ -20,7 +20,7 @@ RUN set -eux \
   && echo "Cleaning and setting links" \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
-  && export PLAYWRIGHT_VERSION=${PLAYWRIGHT_VERSION} \
+  && export PLAYWRIGHT_VERSION=${TAG} \
   && mvn --version \
   && mvn exec:java -f ${HOME}/pom.xml -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install-deps" \
   && mvn exec:java -f ${HOME}/pom.xml -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium" \
