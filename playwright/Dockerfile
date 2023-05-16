@@ -1,9 +1,9 @@
 FROM octoperf/java
 
-ENV MAVEN_VERSION=3.9.2 \
+ARG MAVEN_VERSION=3.9.2 \
     PLAYWRIGHT_VERSION=1.33.0
 
-ENV BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
+ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     MAVEN_HOME=/usr/share/maven \
     MAVEN_CONFIG="${ROOT_DIR}/.m2"
 
