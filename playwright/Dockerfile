@@ -1,7 +1,7 @@
 FROM octoperf/java
 
-ARG MAVEN_VERSION=3.9.2 \
-    TAG=1.33.0
+ARG MAVEN_VERSION=3.9.3 \
+    TAG=1.35.1
 
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries \
     MAVEN_HOME=/usr/share/maven \
