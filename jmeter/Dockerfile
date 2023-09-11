@@ -1,6 +1,6 @@
 FROM octoperf/java-ssh
 
-ENV JMETER_VERSION=5.6.2
+ENV JMETER_VERSION=5.5
 ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://downloads.apache.org/jmeter/binaries/$JMETER_TGZ" \
     JMETER_HOME="${HOME}/apache-jmeter-$JMETER_VERSION" \
