@@ -9,7 +9,7 @@ ENV OP_USER=octoperf \
 
 RUN set -eux \
     && apt-get update -y \
-    && apt-get -y --no-install-recommends install openjdk-${JAVA_VERSION}-jdk gosu locales curl \
+    && apt-get -y --no-install-recommends install openjdk-${JAVA_VERSION}-jdk gosu locales curl lsof \
     && gosu nobody true \
     && groupadd -g ${OP_GID} ${OP_GROUP} \
     && useradd -r -u ${OP_USERID} -g ${OP_GROUP} -G root ${OP_USER} \
