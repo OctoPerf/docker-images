@@ -5,7 +5,7 @@ ARG MAVEN_VERSION=3.9.4 \
 
 ARG BASE_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
     MAVEN_HOME=/usr/share/maven \
-    MAVEN_CONFIG="${ROOT_DIR}/.m2"
+    MAVEN_CONFIG="${HOME}/.m2"
 
 COPY pom.xml ${HOME}/pom.xml
 
