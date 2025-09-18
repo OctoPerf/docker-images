@@ -31,6 +31,7 @@ RUN apt-get update -qqy \
   && rm -rf ${JMETER_HOME}/docs \
   && rm -rf ${JMETER_HOME}/printable_docs \
   && rm -rf ${JMETER_HOME}/licenses \
+  && rm -f ${JMETER_HOME}/lib/commons-lang3-* \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar ${OCTOPERF_PLUGIN_URL} \
   && mkdir -p ${JMETER_HOME}/resources \
   && chown -R ${OP_USER}:root ${HOME} \
