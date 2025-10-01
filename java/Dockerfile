@@ -5,7 +5,7 @@ ENV OP_USER=octoperf \
     OP_USERID=9001 \
     OP_GID=9001 \
     HOME=/home/octoperf \
-    JAVA_VERSION=17
+    JAVA_VERSION=21
 
 RUN set -eux \
     && apt-get update -y \
