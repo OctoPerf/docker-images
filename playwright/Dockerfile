@@ -1,6 +1,6 @@
 FROM octoperf/java
 
-ARG MAVEN_VERSION=3.9.4 \
+ARG MAVEN_VERSION=3.9.11 \
     TAG
 
 ARG BASE_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
