@@ -1,9 +1,11 @@
 FROM octoperf/java
 
-ARG MAVEN_VERSION=3.9.11 \
+ARG MAVEN_VERSION=3.9.16 \
     TAG
 
-ARG BASE_URL=https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+# dlcdn.apache.org only mirrors current releases and purges the rest, which silently breaks this
+# build whenever Maven ships a new patch. archive.apache.org keeps every version forever.
+ARG BASE_URL=https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
     MAVEN_HOME=/usr/share/maven \
     MAVEN_CONFIG="${HOME}/.m2"
 
