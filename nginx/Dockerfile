@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged
+FROM nginx/nginx-unprivileged
 
 ENV NGINX_PORT=8080
 
