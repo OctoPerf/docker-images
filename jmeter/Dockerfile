@@ -1,4 +1,5 @@
-FROM octoperf/java-ssh
+ARG JAVA_VERSION=25
+FROM octoperf/java-ssh:jdk${JAVA_VERSION}
 
 ENV JMETER_VERSION=5.6.3 \
     GROOVY_VERSION=3.0.25

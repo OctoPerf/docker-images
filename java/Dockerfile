@@ -1,11 +1,14 @@
 FROM ubuntu:26.04
 
+# JDK line of the image: 21 or 25, see the jdk<N> tags built by the Makefile
+ARG JAVA_VERSION=25
+
 ENV OP_USER=octoperf \
     OP_GROUP=octoperf \
     OP_USERID=9001 \
     OP_GID=9001 \
     HOME=/home/octoperf \
-    JAVA_VERSION=25
+    JAVA_VERSION=${JAVA_VERSION}
 
 RUN set -eux \
     && apt-get update -y \

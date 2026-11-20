@@ -1,4 +1,5 @@
-FROM octoperf/java
+ARG JAVA_VERSION=25
+FROM octoperf/java:jdk${JAVA_VERSION}
 
 ARG MAVEN_VERSION=3.9.16 \
     TAG
