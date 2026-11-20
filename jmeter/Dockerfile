@@ -34,14 +34,16 @@ RUN apt-get update -qqy \
   && rm -rf ${JMETER_HOME}/printable_docs \
   && rm -rf ${JMETER_HOME}/licenses \
   && rm -f ${JMETER_HOME}/lib/commons-lang3-* \
-  && cd ${JMETER_HOME}/lib \
-  && for jar in groovy-*.jar; do \
-       artifact="${jar%-*.jar}"; \
-       curl -fsSL -o "${artifact}-${GROOVY_VERSION}.jar" "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar" \
-       && echo "$(curl -fsSL "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar.sha1")  ${artifact}-${GROOVY_VERSION}.jar" | sha1sum -c - \
-       && rm "${jar}"; \
-     done \
-  && cd ${HOME} \
+  && if [ "${JAVA_VERSION}" = "25" ]; then \
+       cd ${JMETER_HOME}/lib \
+       && for jar in groovy-*.jar; do \
+            artifact="${jar%-*.jar}"; \
+            curl -fsSL -o "${artifact}-${GROOVY_VERSION}.jar" "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar" \
+            && echo "$(curl -fsSL "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar.sha1")  ${artifact}-${GROOVY_VERSION}.jar" | sha1sum -c - \
+            && rm "${jar}" || exit 1; \
+          done \
+       && cd ${HOME}; \
+     fi \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar ${OCTOPERF_PLUGIN_URL} \
   && mkdir -p ${JMETER_HOME}/resources \
   && chown -R ${OP_USER}:root ${HOME} \

@@ -1,4 +1,6 @@
-FROM ubuntu:26.04
+# The JDK line picks the Ubuntu release (see the Makefile): jdk21 stays on 24.04, jdk25 moves to 26.04.
+ARG UBUNTU_VERSION=26.04
+FROM ubuntu:${UBUNTU_VERSION}
 
 # JDK line of the image: 21 or 25, see the jdk<N> tags built by the Makefile
 ARG JAVA_VERSION=25
