@@ -9,6 +9,6 @@ RUN apt-get update -y \
   && echo "AllowUsers octoperf" >> /etc/ssh/sshd_config \
   && apt-get autoremove --purge -y \
   && rm -rf /var/lib/apt/lists/* \
-  && mkdir /var/run/sshd \
+  && mkdir -p /var/run/sshd \
   && ssh-keygen -A \
   && service ssh reload
