@@ -1,6 +1,8 @@
-FROM octoperf/java-ssh
+ARG JAVA_VERSION=25
+FROM octoperf/java-ssh:jdk${JAVA_VERSION}
 
-ENV JMETER_VERSION=5.6.3
+ENV JMETER_VERSION=5.6.3 \
+    GROOVY_VERSION=3.0.25
 ENV JMETER_TGZ="apache-jmeter-$JMETER_VERSION.tgz"
 ENV JMETER_DOWNLOAD_URL="https://downloads.apache.org/jmeter/binaries/$JMETER_TGZ" \
     JMETER_HOME="${HOME}/apache-jmeter-$JMETER_VERSION" \
@@ -32,6 +34,16 @@ RUN apt-get update -qqy \
   && rm -rf ${JMETER_HOME}/printable_docs \
   && rm -rf ${JMETER_HOME}/licenses \
   && rm -f ${JMETER_HOME}/lib/commons-lang3-* \
+  && if [ "${JAVA_VERSION}" = "25" ]; then \
+       cd ${JMETER_HOME}/lib \
+       && for jar in groovy-*.jar; do \
+            artifact="${jar%-*.jar}"; \
+            curl -fsSL -o "${artifact}-${GROOVY_VERSION}.jar" "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar" \
+            && echo "$(curl -fsSL "https://repo1.maven.org/maven2/org/codehaus/groovy/${artifact}/${GROOVY_VERSION}/${artifact}-${GROOVY_VERSION}.jar.sha1")  ${artifact}-${GROOVY_VERSION}.jar" | sha1sum -c - \
+            && rm "${jar}" || exit 1; \
+          done \
+       && cd ${HOME}; \
+     fi \
   && curl -L --show-error -o ${JMETER_HOME}/lib/ext/thread-group.jar ${OCTOPERF_PLUGIN_URL} \
   && mkdir -p ${JMETER_HOME}/resources \
   && chown -R ${OP_USER}:root ${HOME} \

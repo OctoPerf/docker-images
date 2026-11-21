@@ -1,4 +1,5 @@
-FROM octoperf/java
+ARG JAVA_VERSION=25
+FROM octoperf/java:jdk${JAVA_VERSION}
 
 RUN apt-get update -y \
   && apt-get -y --no-install-recommends install net-tools sysstat ssh fail2ban \
@@ -9,6 +10,6 @@ RUN apt-get update -y \
   && echo "AllowUsers octoperf" >> /etc/ssh/sshd_config \
   && apt-get autoremove --purge -y \
   && rm -rf /var/lib/apt/lists/* \
-  && mkdir /var/run/sshd \
+  && mkdir -p /var/run/sshd \
   && ssh-keygen -A \
   && service ssh reload
